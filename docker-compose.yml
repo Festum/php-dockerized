@@ -1,3 +1,11 @@
+data:
+  image: busybox
+  volumes:
+    - ./www:/var/www
+    - ./context/sites:/etc/nginx/conf.d
+    - ./context/sql:/docker-entrypoint-initdb.d
+    - ./logs:/var/log/supervisor
+
 front:
   build: .
   ports:
@@ -11,10 +19,8 @@ front:
     - redis:redis
     - elasticsearch:elasticsearch
     - rabbitmq:rabbitmq
-  volumes:
-    - ./www:/var/www
-    - ./sites:/etc/nginx/conf.d
-    - ./logs:/var/log/supervisor
+  volumes_from:
+    - data
 
 mysql:
   image: mysql

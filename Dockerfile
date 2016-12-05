@@ -48,9 +48,9 @@ RUN echo deb http://dl.hhvm.com/debian jessie main | tee /etc/apt/sources.list.d
 RUN apt-get update && apt-get install -y hhvm
 
 # Add configuration files
-COPY conf/nginx.conf /etc/nginx/
-COPY conf/supervisord.conf /etc/supervisor/conf.d/
-COPY conf/php.ini /etc/php5/fpm/conf.d/40-custom.ini
+COPY context/conf/nginx.conf /etc/nginx/
+COPY context/conf/supervisord.conf /etc/supervisor/conf.d/
+COPY context/conf/php.ini /etc/php5/fpm/conf.d/40-custom.ini
 
 ################################################################################
 # Volumes
